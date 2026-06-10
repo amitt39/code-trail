@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+input {
+  width: 500px;
+  border-radius: 0.5rem;
+  height: 30px;
+  background-color: #1c1c1c;
+  padding-left: 0.5rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 0.5rem;
+  background-color: #1c1c1c;
+  cursor: pointer;
+}
+
+div {
+  display: flex;
+  gap: 0.5rem;
+}

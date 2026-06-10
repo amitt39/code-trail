@@ -1,0 +1,9 @@
+.highlight {
+  color: white;
+  background-color: blue;
+  padding: 8px;
+}
+
+.hidden {
+  display: none;
+}

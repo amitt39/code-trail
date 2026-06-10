@@ -1,0 +1,176 @@
+/* ─── Overlay ────────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+}
+
+/* ─── Modal ──────────────────────────────────────────────── */
+.modalPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 420px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.modalTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.modalSubtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ─── Inputs ─────────────────────────────────────────────── */
+.modalInput {
+  width: 100%;
+  height: 48px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 400;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+
+.modalInput::-webkit-inner-spin-button,
+.modalInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modalInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.modalInput:focus {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+/* ─── Select ─────────────────────────────────────────────── */
+.modalSelect {
+  width: 100%;
+  height: 48px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 400;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.modalSelect:focus {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+.modalSelect option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+/* ─── Buttons ────────────────────────────────────────────── */
+.modalBtnAdd {
+  width: 100%;
+  height: 48px;
+  background: #efefef;
+  color: #0d0d0d;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  margin-top: 4px;
+}
+
+.modalBtnAdd:hover {
+  background: #9e9e9e;
+}
+
+.modalBtnAdd:active {
+  transform: scale(0.98);
+}
+
+.modalBtnCancel {
+  width: 100%;
+  height: 48px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.modalBtnCancel:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* ─── Validation ─────────────────────────────────────────── */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputError {
+  border-color: #e05252 !important;
+}
+
+.errorMsg {
+  font-size: 12px;
+  color: #e05252;
+  margin: 0;
+  padding-left: 2px;
+}

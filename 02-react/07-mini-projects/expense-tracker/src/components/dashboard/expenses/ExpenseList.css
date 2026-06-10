@@ -1,0 +1,243 @@
+/* ─── Panel ─────────────────────────────────────────────── */
+.expenseListPanel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.expenseListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  /* FIX 3: header never shrinks — only the list below moves */
+  flex-shrink: 0;
+}
+
+/* FIX 1: title is a section heading, not an input pill */
+.expenseListTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  /* no border, no background — plain heading */
+}
+
+/* wrapper that holds slider + dropdown */
+.expenseHeaderControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ─── Slider ─────────────────────────────────────────────── */
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sliderWrapper input[type="number"] {
+  width: 64px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  font-feature-settings: "tnum";
+  transition: border-color 0.2s;
+  -moz-appearance: textfield;
+}
+
+.sliderWrapper input[type="number"]::-webkit-inner-spin-button,
+.sliderWrapper input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sliderWrapper input[type="number"]:focus {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+.sliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 140px;
+  height: 20px;
+}
+
+.sliderTrack {
+  background: var(--border);
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 4px;
+}
+
+.sliderRange {
+  position: absolute;
+  background: var(--accent);
+  border-radius: 9999px;
+  height: 100%;
+}
+
+.sliderThumb {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-hover);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.sliderThumb:hover {
+  border-color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.sliderThumb:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── FIX 2: dropdown styled to match the dark system ────── */
+.expenseHeaderControls select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 32px 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  /* custom chevron */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  min-width: 90px;
+}
+
+.expenseHeaderControls select:hover {
+  border-color: var(--border-hover);
+  background-color: var(--bg-hover);
+}
+
+.expenseHeaderControls select:focus {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+.expenseHeaderControls select option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+/* ─── FIX 3: list scrolls independently, panel stays fixed ── */
+.expenseListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* cap height so only this region grows/shrinks */
+  min-height: 120px;
+  max-height: 420px;
+  overflow-y: auto;
+  /* subtle scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.expenseListWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.expenseListWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.expenseListWrapper::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+.expenseListWrapper:not(:has(.expenseItem)) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  min-height: 120px;
+}
+
+/* ─── List items ─────────────────────────────────────────── */
+.expenseItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.expenseItem:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.expenseItemDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.expenseItemTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.expenseItemCategory {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.expenseItemAmount {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-feature-settings: "tnum";
+}
