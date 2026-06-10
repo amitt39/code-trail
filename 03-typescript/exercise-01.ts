@@ -110,5 +110,5 @@ const config: Config = {
   timeout: 3000,
 };
 
-config.apiUrl = "https://other.com";
+// config.apiUrl = "https://other.com";
 config.timeout = 5000;
