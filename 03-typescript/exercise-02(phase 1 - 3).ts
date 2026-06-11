@@ -118,3 +118,41 @@ type A = { id: string };
 type B = { id: number };
 type C = A & B;
 // Don't run it yet — first write down what you think C.id will be. Then create a variable of type C and try to assign something to id. What does TypeScript say? Explain why.
+
+// C.id will act as union now, it will expect both string and number.
+
+// const var1: C = {
+//   id: "abc",
+// };
+// const var2: C = {
+//   id: 5,
+// };
+
+// Model this data:
+// You have an API response for a user profile. It has:
+
+// id — can't be changed after creation
+// name and email — required
+// bio — optional
+// role — can only be "admin", "editor", or "viewer"
+// address — an object with city and country
+// metadata — a flexible key-value store where keys are strings and values are strings
+
+// Write this as an interface. Then write a second interface AdminUser that extends it and adds a permissions array of strings.
+
+interface ApiResponse2 {
+  readonly id: number;
+  name: string;
+  email: string;
+  bio?: string;
+  role: "admin" | "editor" | "viewer";
+  address: {
+    city: string;
+    country: string;
+  };
+  metadata: { [key: string]: string };
+}
+
+interface AdminUser extends ApiResponse2 {
+  permissions: Array<string>;
+}
