@@ -1,13 +1,21 @@
 import { FaGithub } from "react-icons/fa";
-
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 flex items-center justify-between px-16 py-8">
+    <nav
+      className={`absolute top-0 left-0 w-full z-50 flex items-center justify-between px-16 py-5 ${
+        isHome
+          ? "bg-gradient-to-b from-[#1A1A2E] via-[#1A1A2E]/70 to-transparent backdrop-blur-sm"
+          : "bg-[#1A1A2E]"
+      }`}
+    >
       <span
-        className="cursor-pointer text-2xl font-bold text-[#FFF8F0]"
+        className="text-3xl font-bold bg-gradient-to-r from-[#FFF8F0] to-[#FF8C69] bg-clip-text text-transparent cursor-pointer"
         style={{ fontFamily: "Clash Display" }}
         onClick={() => {
           navigate("/");
@@ -16,7 +24,7 @@ function Navbar() {
         WhatCanICook!
       </span>
 
-      <div className="flex gap-8 font-medium text-sm bg-white/30 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full">
+      <div className="flex gap-8 font-medium text-sm bg-white/10 border border-white/15 px-4 py-2 rounded-full">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -26,6 +34,16 @@ function Navbar() {
           }
         >
           Home
+        </NavLink>
+        <NavLink
+          to="/search-by-ingredients"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#FFF8F0]"
+              : "text-[#FFF8F0]/60 hover:text-[#FFF8F0] transition-colors"
+          }
+        >
+          By Ingredients
         </NavLink>
         <NavLink
           to="/favorites"
@@ -44,9 +62,6 @@ function Navbar() {
           <FaGithub size={16} />
           <span>Source Code</span>
         </button>
-        {/* <button className="px-5 py-2 rounded-full bg-[#FF8C69] text-[#1A1A2E] text-sm font-medium hover:bg-[#ff7a52] transition-colors">
-          Sign up
-        </button> */}
       </div>
     </nav>
   );
